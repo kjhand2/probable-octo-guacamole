@@ -14,11 +14,9 @@ with open(file_name) as f:
     file_content = f.read().strip()
 
 integer_parsed = int(file_content,16)
-    
-binary_content = file_content.decode('hex')
 
 with open(write_integer, "w") as i:
     i.write(str(integer_parsed))
 
 with open(write_binary, "w") as b:
-    b.write(str(binary_content)[2:])
+    b.write(bin(integer_parsed)[2:])
