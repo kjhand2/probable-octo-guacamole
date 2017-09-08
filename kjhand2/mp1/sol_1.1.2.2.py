@@ -17,9 +17,11 @@ with open(iv_file) as f:
     iv = f.read().strip()
     iv = iv.decode('hex')
 
-AES_cipher = AES.new(key, 1, iv)
+AES_cipher = AES.new(key, 2, iv)
 
-write_out = AES_cipher.decrypt(cipher)
+write_out = AES_cipher.decrypt(cipher1)
 
 with open(output_file, "w") as f:
     f.write(write_out)
+    
+print(write_out)
