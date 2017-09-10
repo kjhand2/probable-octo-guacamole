@@ -15,11 +15,13 @@ with open(modulo_file) as f:
     modulo = f.read().strip()
     modulo = int(modulo,16)
     
-e_prime = 0
-message = 1
-while(e_prime < key):
-    e_prime = e_prime+1
-    message = (encrypted * message) % modulo
+#e_prime = 0
+#message = 1
+#while(e_prime < key):
+#    e_prime = e_prime+1
+#    message = (encrypted * message) % modulo
+
+message = pow(encrypted, key, modulo)
 
 with open(output_file, "w") as f:
-    f.write(hex(message)[2:])
+    f.write(format(message, 'x'))
