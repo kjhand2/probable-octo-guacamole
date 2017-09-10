@@ -1,5 +1,4 @@
 from sys import argv
-import math
 
 cipher_file = argv[1]
 key_file = argv[2]
@@ -23,4 +22,4 @@ while(e_prime < key):
     message = (encrypted * message) % modulo
 
 with open(output_file, "w") as f:
-    f.write(hex(message))
+    f.write(hex(message)[2:])
