@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 import os,sys
-fkey = open("1.1.2.1_sub_key.txt","r") 
+fkey = open(sys.argv[2],"r") 
 fkey_cont = fkey.read().strip()
-fciph = open("1.1.2.1_sub_ciphertext.txt","r")
+fciph = open(sys.argv[1],"r")
 fciph_cont = fciph.read().strip()
 s = len(fciph_cont)
 s_key = len(fkey_cont)
 run = ['']*s
-fout =  open("sol_1.1.2.1.txt","w+")
+fout =  open(sys.argv[3],"w+")
 x=0
 y=0
 key = fkey_cont[x]
