@@ -1,21 +1,19 @@
 import hashlib,binascii,io,sys
-def hamDist(m1,m2):
-	if len(m1) != len(m2):
-		raise ValueError("Not equal lengths")
-	return sum(x1 != x2 for x1, x2 in zip(m1,m2))
-
+def hamDist(bin_1,bin_2):
+	return sum(x1 != x2 for x1, x2 in zip(bin_1,bin_2))
 #in and out
 s1 = open(sys.argv[1],"r")
 s2 = open(sys.argv[2],"r")
 out = io.FileIO(sys.argv[3],"w")
-#convert to hash
+#convert to hash input string
 s1cont = s1.read().strip()
+bin_1 = bin(int(hashlib.sha256(s1cont).hexdigest(),16))[2:]
+#convert to hash perturbed string
 s2cont = s2.read().strip()
-m1=hashlib.sha256(s1cont).hexdigest()
-m2=hashlib.sha256(s2cont).hexdigest()
-result = hamDist(m1=m1,m2=m2)
-print result
-out.write(str(hex(result)[2:]))
+bin_2 = bin(int(hashlib.sha256(s2cont).hexdigest(),16))[2:]
+#compute hamming distance
+res = hamDist(bin_1=bin_1,bin_2=bin_2)
+out.write(str(hex(res-1)[2:]))
 out.close()
 s2.close()
 s1.close()
