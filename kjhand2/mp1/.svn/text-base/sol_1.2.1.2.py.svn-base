@@ -20,9 +20,9 @@ h.update(command)
 token = h.hexdigest()
 
 msg_len = 8 + len(query[39:])
-pad = padding(msg_len)
+pad = padding(msg_len * 8)
 
-new_query = "token=" + str(token) + str(query[38:]) + urllib.quote(pad) + command
+new_query = urllib.quote("token=" + str(token) + str(query[38:]) + pad + command, safe ="&=")
 
 with open(output_file, "w") as f:
     f.write(new_query)
