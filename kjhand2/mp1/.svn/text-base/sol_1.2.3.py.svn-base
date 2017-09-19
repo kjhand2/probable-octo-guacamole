@@ -1,0 +1,40 @@
+import urllib2
+from sys import argv
+import numpy as np
+
+def pad(msg):
+    n = len(msg) % 16
+    return msg + "".join(chr(i) for i in range(16, n, -1))
+
+def get_status(u):
+    req = urllib2.Request(u)
+    try:
+        f = urllib2.urlopen(req)
+        return f.code
+    except urllib2.HTTPError, e:
+        return e.code
+
+ciphertext = argv[1]
+masks = [0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80]
+
+with open(ciphertext) as f:
+    cipher = f.read().strip()
+    cipher = cipher.decode('hex')
+    
+cipher = bytearray(cipher)
+#maybe just use cipher and then do all the math with % or something
+#do we need to keep track of the message block? we are just changing 
+#cipher -15 bytes
+message = np.zeros((len(cipher)/16,16), dtype=uint)
+
+for i in range(0, (len(cipher)/16)):
+    message[i] = bytearray(cipher[16*i:16*(i+1)])
+
+message_copy = message
+
+for guess_block_index in range(len(message), 0, -1):
+    for byte_index in range(15, -1, -1):
+        for mask in masks:
+            for g in range(0, 256):
+                message_copy[guess_block_index-1][byte_index] = message[guess_block_index-1][byte_index] ^ g ^ mask
+                

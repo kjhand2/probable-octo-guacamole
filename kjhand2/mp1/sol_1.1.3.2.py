@@ -24,4 +24,4 @@ for byte in message:
     
 with open(output_file, "w") as f:
     f.write(format(write_out, 'x'))
-print(format(write_out, 'x'))
+#print(format(write_out, 'x'))
