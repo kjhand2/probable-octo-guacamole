@@ -94,7 +94,7 @@ while line < len(linesList):
 	p = p*intLine
 	line_tot = line_tot +1
 	line= line+1
-print "past initial read in"
+#print "past initial read in"
 z = []
 gcdList = []
 curr = 0
@@ -102,7 +102,6 @@ p_enc = 0
 numTimes = 0
 text = "start"
 while curr < line_tot-1:
-#	print curr
 	w = p % ((int(linesList[curr],16))**2)
 	z.append(w)
 	out = gcd(int(linesList[curr],16),z[curr]/int(linesList[curr],16))
@@ -122,7 +121,7 @@ while curr < line_tot-1:
 			text = decrypt(currentKey,textCiph)
 			curr = line_tot
 		except:
-			print "keep going"
+			pass
 	curr = curr+1
 #print numTimes
 #print text
