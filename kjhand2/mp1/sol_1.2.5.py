@@ -14,6 +14,7 @@ from cryptography.hazmat.primitives.asymmetric import rsa
 from Crypto.Util import number
 import datetime
 import hashlib
+import struct
 
 # Utility to make a cryptography.x509 RSA key object from p and q
 def make_privkey(p, q, e=65537):
@@ -58,12 +59,33 @@ def make_cert(netid, pubkey, pseudo, ca_key = ECE422_CA_KEY, serial=x509.random_
     return cert
 
 ### End Given CODE ###
+#output of chinese remainder theorem 
+def getCRT(b1,b2,p1,p2):
+    Num = p1 * p2
+    inv1 = number.inverse(p2,p1)
+    inv2 = number.inverse(p1,p2)
+    return -(b1 * inv1 * p2 + b2 * inv2 * p1) %Num
 
+e = 65537
 import binascii
 import numpy as np
 import sys
 from pymd5 import md5, padding
-
+#in and out 
+b1File = open(sys.argv[1],"rb")
+b2File = open(sys.argv[2],"rb")
+b1cont = b1File.read()
+b2cont = b2File.read()
+#b1bin = b1cont.decode('hex')
+#b2bin = b2cont.decode('hex')
+b1cont = b1cont[2:]
+b2cont = b2cont[2:]
+b1 = int(b1cont,16)
+b2 = int(b2cont,16)
+#b1 = int(b1File.read(),16)
+#b2 = int(b2File.read(),16)
+print b1.bit_length
+print b2.bit_length
 p = number.getPrime(1024)
 q = number.getPrime(1024)
 privkey, pubkey = make_privkey(p, q)
@@ -75,5 +97,13 @@ with open("prefix_file.txt", "w") as f:
 
 assert (len(sys.argv) > 1),  "No Collision Provided"
 
+#generate random primes p1 and p2 of approximately 512 bits, such that e is coprime to p1 − 1 and p2 − 1;
+coprime = 0
+while coprime == 0:
+    p1 = number.getPrime(512)
+    p2 = number.getPrime(512)
+    if e % (p1-1) != 0 and e % (p2-1) != 0:
+        coprime = 1
 
+b0 = getCRT(b1=b1,b2=b2,p1=p1,p2=p2)
 
