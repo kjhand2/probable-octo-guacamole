@@ -1,14 +1,14 @@
 10
 
 dir
-1729
-https://subversion.engr.illinois.edu/svn/fa17-cs461/kjhand2
+1788
+https://subversion.engr.illinois.edu/svn/fa17-cs461/_shared
 https://subversion.engr.illinois.edu/svn/fa17-cs461
 
 
 
-2017-09-14T06:41:03.234557Z
-1581
+2017-09-15T01:20:34.185467Z
+1615
 amingni2
 
 
@@ -25,6 +25,9 @@ amingni2
 
 
 ac55bb54-5763-40d4-bf77-ac5677323616
+
+discussion_slides
+dir
 
 mp1
 dir
