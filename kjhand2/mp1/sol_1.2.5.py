@@ -170,12 +170,25 @@ while k != -1:
                 test =1
     q1 = (b1*2**1024 + b)/p1
     q2 = (b2*2**1024 + b)/p2 
-    if isPrime(q1) ==0 and isPrime(q2) == 0 and e % (q1) != 0 and e % (q2) != 0:
+#    if isPrime(q1) ==0 and isPrime(q2) == 0 and e % (q1) != 0 and e % (q2) != 0:
+    if e % (q1-1) != 0 and e % (q2-1) != 0:
         break
     k = k+1
 
     
 n1 = b1*2**1024 + b
 n2 = b2*2**1024 + b
-print n1
-print n2
+if gcd(q1-1,e) != 1:
+    print "gcd(q1-1,e)"
+if gcd(q2-1,e) != 1:
+    print "gcd(q2-1,e)"
+#print n1
+#print n2
+
+ver1 = [2]
+# return privkey, pubkey
+privkey1,pubkey1 = make_privkey(p1, q1, e)
+privkey2,pubkey2 = make_privkey(p2, q2, e)
+#make_cert(netid, pubkey, pseudo, ca_key = ECE422_CA_KEY, serial=x509.random_serial_number())
+#cert1 = make_cert(ctblair2,pubkey1,pseudo)
+#cert2 = make_cert(ctblair2,pubkey2,pseudo)
