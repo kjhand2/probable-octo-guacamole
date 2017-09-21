@@ -184,7 +184,7 @@ while k != -1:
                 test =1
     q1 = int((b1*2**1024 + b)/p1)
     q2 = int((b2*2**1024 + b)/p2)
-    if isPrime(q1) ==True and isPrime(q2) == True and e % (q1-1) != 0 and e % (q2-1) != 0:
+    if e % (q1-1) != 0 and e % (q2-1) != 0:
 #    if e % (q1-1) != 0 and e % (q2-1) != 0:
         break
     k = k+1
