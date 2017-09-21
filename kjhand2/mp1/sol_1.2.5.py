@@ -88,6 +88,8 @@ b1File = open(sys.argv[1],"rb")
 b2File = open(sys.argv[2],"rb")
 b1cont = b1File.read()
 b2cont = b2File.read()
+print len(b1cont)
+print len(b2cont)
 #b1bin = b1cont.decode('hex')
 #b2bin = b2cont.decode('hex')
 b1cont = b1cont[2:]
@@ -96,8 +98,8 @@ b1 = int(binascii.hexlify(bytearray(b1cont)),16)
 b2 = int(binascii.hexlify(bytearray(b2cont)),16)
 #b1 = int(b1File.read(),16)
 #b2 = int(b2File.read(),16)
-print b1.bit_length
-print b2.bit_length
+print b1.bit_length()
+print b2.bit_length()
 
 #generate random primes p1 and p2 of approximately 512 bits, such that e is coprime to p1 − 1 and p2 − 1;
 coprime = 0
