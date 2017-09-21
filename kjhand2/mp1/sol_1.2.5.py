@@ -211,3 +211,12 @@ privkey2, pubkey2 = make_privkey(p2, q2, e)
 cert1 = make_cert("kjhand2",pubkey1,u'0000000000000000000000000000000000000000000000000000000000000000')
 cert2 = make_cert("kjhand2",pubkey2,u'0000000000000000000000000000000000000000000000000000000000000000')
 
+with open("sol_1.2.5factorsA.hex", "w") as f:
+    f.write(format(p1, 'x'))
+    f.write("\n")
+    f.write(format(q1, 'x'))
+    
+with open("sol_1.2.5factorsB.hex", "w") as f:
+    f.write(format(p2, 'x'))
+    f.write("\n")
+    f.write(format(p2, 'x'))
