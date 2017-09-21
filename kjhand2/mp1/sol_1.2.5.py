@@ -192,6 +192,7 @@ ver1 = [2]
 privkey1, pubkey1 = make_privkey(p1, q1, e)
 privkey2, pubkey2 = make_privkey(p2, q2, e)
 #make_cert(netid, pubkey, pseudo, ca_key = ECE422_CA_KEY, serial=x509.random_serial_number())
-cert1 = make_cert("ctblair2",pubkey1,u'unused123456789asdfgqwertasd')
-cert2 = make_cert("ctblair2",pubkey2,u'unused123456789asdfgqwertasd')
+padding = u'0000000000000000000000000000000000000000000000000000000000000000'
+cert1 = make_cert("ctblair2",pubkey1,padding)
+cert2 = make_cert("ctblair2",pubkey2,padding)
 
