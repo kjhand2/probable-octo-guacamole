@@ -15,6 +15,8 @@ from Crypto.Util import number
 import datetime
 import hashlib
 import struct
+import math
+from fractions import gcd
 
 # Utility to make a cryptography.x509 RSA key object from p and q
 def make_privkey(p, q, e=65537):
@@ -65,23 +67,46 @@ def getCRT(b1,b2,p1,p2):
     inv1 = number.inverse(p2,p1)
     inv2 = number.inverse(p1,p2)
     return -(b1 * inv1 * p2 + b2 * inv2 * p1) %Num
+'''
+def isPrime(n):
+    n = abs(long(n))
+    if n < 2:
+        return False
+    if n ==2:
+        return True
+    if not n & 1:
+        return False
+
+    for x in range(3,int(n**.5)+1,2):
+            if n % x ==0:
+                return False
+    return True
+'''
+def isPrime(a):
+    return all(a % i for i in xrange(2, a))
 
 e = 65537
 import binascii
 import numpy as np
 import sys
 from pymd5 import md5, padding
+test = 0
 
-p = number.getPrime(1024)
-q = number.getPrime(1024)
+while test ==0:
+    p = number.getPrime(1024)
+    q = number.getPrime(1024)
+#    print (p*q).bit_length()
+    if (p*q).bit_length() == 2047:
+        test =1
+print (p*q).bit_length()
 privkey, pubkey = make_privkey(p, q)
 init_cert = make_cert("kjhand2", pubkey, u'unused123456789asdfgqwertasd')
 prefix = init_cert.tbs_certificate_bytes[:192] # this is the prefix
 
-with open("prefix_file.txt", "w") as f:
-    f.write(prefix)
+with open("prefix_file", "wb") as f:
+    f.write(binascii.hexlify(bytearray(prefix)))
 
-assert (len(sys.argv) > 1),  "No Collision Provided"
+#assert (len(sys.argv) > 1),  "No Collision Provided"
 
 #in and out 
 b1File = open(sys.argv[1],"rb")
@@ -92,10 +117,13 @@ print len(b1cont)
 print len(b2cont)
 #b1bin = b1cont.decode('hex')
 #b2bin = b2cont.decode('hex')
-b1cont = b1cont[2:]
-b2cont = b2cont[2:]
+#b1cont = b1cont[2:]
+#b2cont = b2cont[2:]
 b1 = int(binascii.hexlify(bytearray(b1cont)),16)
 b2 = int(binascii.hexlify(bytearray(b2cont)),16)
+b1 = b1<<1024
+b2 = b2<<1024
+
 #b1 = int(b1File.read(),16)
 #b2 = int(b2File.read(),16)
 print b1.bit_length()
@@ -109,5 +137,45 @@ while coprime == 0:
     if e % (p1-1) != 0 and e % (p2-1) != 0:
         coprime = 1
 
-b0 = getCRT(b1=b1,b2=b2,p1=p1,p2=p2)
+test = 0
+while test == 0:
+    b0 = getCRT(b1=b1,b2=b2,p1=p1,p2=p2)
+    if gcd(b1+b0,p1) == p1 and gcd(b2+b0,p2) == p2 and (b1+b0) % p1 ==0 and (b2+b0) % p2 ==0:
+        print "b0 thing is right"
+        test = 1
+    else:
+        print"shit doesnt work"
+        test =1
+b=0
+k=0
+while k != -1:
+    b = b0 + k*p1*p2
+#please dont hate me.... i didnt want to organize everything again
+    if b >= 2**1024:
+        coprime = 0
+        while coprime == 0:
+            p1 = number.getPrime(512)
+            p2 = number.getPrime(512)
+        if e % (p1-1) != 0 and e % (p2-1) != 0:
+            coprime = 1
 
+        test = 0
+        while test == 0:
+            b0 = getCRT(b1=b1,b2=b2,p1=p1,p2=p2)
+            if gcd(b1+b0,p1) == p1 and gcd(b2+b0,p2) == p2 and (b1+b0) % p1 ==0 and (b2+b0) % p2 ==0:
+                print "b0 thing is right"
+                test = 1
+            else:
+                print"shit doesnt work"
+                test =1
+    q1 = (b1*2**1024 + b)/p1
+    q2 = (b2*2**1024 + b)/p2 
+    if isPrime(q1) ==0 and isPrime(q2) == 0 and e % (q1) != 0 and e % (q2) != 0:
+        break
+    k = k+1
+
+    
+n1 = b1*2**1024 + b
+n2 = b2*2**1024 + b
+print n1
+print n2
