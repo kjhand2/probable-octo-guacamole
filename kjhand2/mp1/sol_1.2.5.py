@@ -59,7 +59,7 @@ def make_cert(netid, pubkey, pseudo, ca_key = ECE422_CA_KEY, serial=x509.random_
     builder = builder.public_key(pubkey)
     cert = builder.sign(private_key=ECE422_CA_KEY, algorithm=hashes.MD5(), backend=default_backend())
     return cert
-
+padding = u'0000000000000000000000000000000000000000000000000000000000000000'
 ### End Given CODE ###
 #output of chinese remainder theorem 
 def getCRT(b1,b2,p1,p2):
@@ -99,7 +99,7 @@ while test ==0:
         test =1
 print (p*q).bit_length()
 privkey, pubkey = make_privkey(p, q)
-init_cert = make_cert("kjhand2", pubkey, u'unused123456789asdfgqwertasd')
+init_cert = make_cert("kjhand2", pubkey,u'0000000000000000000000000000000000000000000000000000000000000000')
 prefix = init_cert.tbs_certificate_bytes[:192] # this is the prefix
 #assert ((len(prefix)) % 64 ==0),"length of prefix is not 64"
 with open("prefix_file", "wb") as f:
@@ -120,14 +120,14 @@ print len(b2cont)
 #b2cont = b2cont[2:]
 b1 = int(binascii.hexlify(bytearray(b1cont)),16)
 b2 = int(binascii.hexlify(bytearray(b2cont)),16)
-b1 = b1<<1024
-b2 = b2<<1024
 
+ 
 #b1 = int(b1File.read(),16)
 #b2 = int(b2File.read(),16)
 print b1.bit_length()
 print b2.bit_length()
-
+b1 = b1<<1024
+b2 = b2<<1024
 #generate random primes p1 and p2 of approximately 512 bits, such that e is coprime to p1 − 1 and p2 − 1;
 coprime = 0
 while coprime == 0:
@@ -192,7 +192,7 @@ ver1 = [2]
 privkey1, pubkey1 = make_privkey(p1, q1, e)
 privkey2, pubkey2 = make_privkey(p2, q2, e)
 #make_cert(netid, pubkey, pseudo, ca_key = ECE422_CA_KEY, serial=x509.random_serial_number())
-padding = u'0000000000000000000000000000000000000000000000000000000000000000'
-cert1 = make_cert("ctblair2",pubkey1,padding)
-cert2 = make_cert("ctblair2",pubkey2,padding)
+
+cert1 = make_cert("kjhand2",pubkey1,u'0000000000000000000000000000000000000000000000000000000000000000')
+cert2 = make_cert("kjhand2",pubkey2,u'0000000000000000000000000000000000000000000000000000000000000000')
 
