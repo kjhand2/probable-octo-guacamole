@@ -106,7 +106,7 @@ while test ==0:
 #    print (p*q).bit_length()
     if (p*q).bit_length() == 2047:
         test =1
-print (p*q).bit_length()
+#print (p*q).bit_length()
 privkey, pubkey = make_privkey(p, q)
 init_cert = make_cert("kjhand2", pubkey,u'0000000000000000000000000000000000000000000000000000000000000000')
 prefix = init_cert.tbs_certificate_bytes[:256] # this is the prefix
@@ -121,14 +121,14 @@ b1File = open(sys.argv[1],"rb")
 b2File = open(sys.argv[2],"rb")
 b1cont = b1File.read()
 b2cont = b2File.read()
-print len(b1cont)
-print len(b2cont)
+#print len(b1cont)
+#print len(b2cont)
 #b1bin = b1cont.decode('hex')
 #b2bin = b2cont.decode('hex')
 #b1cont = b1cont[2:]
 #b2cont = b2cont[2:]
-print b1cont 
-print b2cont
+#print b1cont 
+#print b2cont
 b1 = b1cont[512:]
 b2 = b2cont[512:]
 b1 = int(binascii.hexlify(bytearray(b1cont)),16)
@@ -137,8 +137,8 @@ b2 = int(binascii.hexlify(bytearray(b2cont)),16)
  
 #b1 = int(b1File.read(),16)
 #b2 = int(b2File.read(),16)
-print b1.bit_length()
-print b2.bit_length()
+#print b1.bit_length()
+#print b2.bit_length()
 b1 = b1<<1024
 b2 = b2<<1024
 #generate random primes p1 and p2 of approximately 512 bits, such that e is coprime to p1 − 1 and p2 − 1;
@@ -154,7 +154,7 @@ test = 0
 while test == 0:
     b0 = getCRT(b1=b1,b2=b2,p1=p1,p2=p2)
     if gcd(b1+b0,p1) == p1 and gcd(b2+b0,p2) == p2 and (b1+b0) % p1 ==0 and (b2+b0) % p2 ==0:
-        print "b0 thing is right"
+        #print "b0 thing is right"
         test = 1
     else:
         print"shit doesnt work"
@@ -211,12 +211,12 @@ privkey2, pubkey2 = make_privkey(p2, q2, e)
 cert1 = make_cert("kjhand2",pubkey1,u'0000000000000000000000000000000000000000000000000000000000000000')
 cert2 = make_cert("kjhand2",pubkey2,u'0000000000000000000000000000000000000000000000000000000000000000')
 
-with open("sol_1.2.5factorsA.hex", "w") as f:
+with open("sol_1.2.5_factorsA.hex", "w") as f:
     f.write(format(p1, 'x'))
     f.write("\n")
     f.write(format(q1, 'x'))
     
-with open("sol_1.2.5factorsB.hex", "w") as f:
+with open("sol_1.2.5_factorsB.hex", "w") as f:
     f.write(format(p2, 'x'))
     f.write("\n")
     f.write(format(p2, 'x'))
