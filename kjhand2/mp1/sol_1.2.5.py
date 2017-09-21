@@ -84,6 +84,15 @@ def isPrime(n):
 def isPrime(a):
     return all(a % i for i in xrange(2, a))
 '''
+def getCoprimes(e=5537):
+    bitSize = 512
+    p1, p2 = -1, -1
+    while p1 == p2:
+        p1 = number.getStrongPrime(bitSize, e)
+        p2 = number.getStrongPrime(bitSize, e)
+    assert(gcd(e, p1-1) ==1)
+    assert(gcd(e, p2-1) == 1)
+    return p1, p2
 e = 65537
 import binascii
 import numpy as np
@@ -135,8 +144,9 @@ b2 = b2<<1024
 #generate random primes p1 and p2 of approximately 512 bits, such that e is coprime to p1 − 1 and p2 − 1;
 coprime = 0
 while coprime == 0:
-    p1 = number.getPrime(512)
-    p2 = number.getPrime(512)
+#    p1 = number.getPrime(512)
+#    p2 = number.getPrime(512)
+    p1,p2 = getCoprimes(e)
     if e % (p1-1) != 0 and e % (p2-1) != 0:
         coprime = 1
 
@@ -157,8 +167,9 @@ while k != -1:
     if b >= 2**1024:
         coprime = 0
         while coprime == 0:
-            p1 = number.getPrime(512)
-            p2 = number.getPrime(512)
+#            p1 = number.getPrime(512)
+#            p2 = number.getPrime(512)
+            p1,p2 = getCoprimes(e)            
             if e % (p1-1) != 0 and e % (p2-1) != 0:
                 coprime = 1
 
@@ -173,7 +184,7 @@ while k != -1:
                 test =1
     q1 = int((b1*2**1024 + b)/p1)
     q2 = int((b2*2**1024 + b)/p2)
-    if isPrime(int(q1)) ==True and isPrime(int(q2)) == True and e % (q1-1) != 0 and e % (q2-1) != 0:
+    if isPrime(q1) ==True and isPrime(q2) == True and e % (q1-1) != 0 and e % (q2-1) != 0:
 #    if e % (q1-1) != 0 and e % (q2-1) != 0:
         break
     k = k+1
