@@ -118,8 +118,10 @@ print len(b2cont)
 #b2bin = b2cont.decode('hex')
 #b1cont = b1cont[2:]
 #b2cont = b2cont[2:]
-b1 = b1cont[3072:4096]
-b2 = b2cont[3072:4096]
+print b1cont 
+print b2cont
+b1 = b1cont[512:1024]
+b2 = b2cont[512:1024]
 b1 = int(binascii.hexlify(bytearray(b1cont)),16)
 b2 = int(binascii.hexlify(bytearray(b2cont)),16)
 
