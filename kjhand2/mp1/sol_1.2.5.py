@@ -100,7 +100,7 @@ while test ==0:
 print (p*q).bit_length()
 privkey, pubkey = make_privkey(p, q)
 init_cert = make_cert("kjhand2", pubkey,u'0000000000000000000000000000000000000000000000000000000000000000')
-prefix = init_cert.tbs_certificate_bytes[:192] # this is the prefix
+prefix = init_cert.tbs_certificate_bytes[:256] # this is the prefix
 #assert ((len(prefix)) % 64 ==0),"length of prefix is not 64"
 with open("prefix_file", "wb") as f:
     f.write(binascii.hexlify(bytearray(prefix)))
@@ -118,6 +118,8 @@ print len(b2cont)
 #b2bin = b2cont.decode('hex')
 #b1cont = b1cont[2:]
 #b2cont = b2cont[2:]
+b1 = b1cont[3072:4096]
+b2 = b2cont[3072:4096]
 b1 = int(binascii.hexlify(bytearray(b1cont)),16)
 b2 = int(binascii.hexlify(bytearray(b2cont)),16)
 
