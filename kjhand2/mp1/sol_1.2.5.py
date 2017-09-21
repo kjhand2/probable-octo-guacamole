@@ -67,9 +67,8 @@ def getCRT(b1,b2,p1,p2):
     inv1 = number.inverse(p2,p1)
     inv2 = number.inverse(p1,p2)
     return -(b1 * inv1 * p2 + b2 * inv2 * p1) %Num
-'''
 def isPrime(n):
-    n = abs(long(n))
+    n = abs(int(n))
     if n < 2:
         return False
     if n ==2:
@@ -77,14 +76,14 @@ def isPrime(n):
     if not n & 1:
         return False
 
-    for x in range(3,int(n**.5)+1,2):
-            if n % x ==0:
-                return False
+#    for x in range(3,int(n.sqrt())+1,2):
+#            if n % x ==0:
+#                return False
     return True
 '''
 def isPrime(a):
     return all(a % i for i in xrange(2, a))
-
+'''
 e = 65537
 import binascii
 import numpy as np
@@ -102,7 +101,7 @@ print (p*q).bit_length()
 privkey, pubkey = make_privkey(p, q)
 init_cert = make_cert("kjhand2", pubkey, u'unused123456789asdfgqwertasd')
 prefix = init_cert.tbs_certificate_bytes[:192] # this is the prefix
-
+#assert ((len(prefix)) % 64 ==0),"length of prefix is not 64"
 with open("prefix_file", "wb") as f:
     f.write(binascii.hexlify(bytearray(prefix)))
 
@@ -156,8 +155,8 @@ while k != -1:
         while coprime == 0:
             p1 = number.getPrime(512)
             p2 = number.getPrime(512)
-        if e % (p1-1) != 0 and e % (p2-1) != 0:
-            coprime = 1
+            if e % (p1-1) != 0 and e % (p2-1) != 0:
+                coprime = 1
 
         test = 0
         while test == 0:
@@ -168,12 +167,15 @@ while k != -1:
             else:
                 print"shit doesnt work"
                 test =1
-    q1 = (b1*2**1024 + b)/p1
-    q2 = (b2*2**1024 + b)/p2 
-#    if isPrime(q1) ==0 and isPrime(q2) == 0 and e % (q1) != 0 and e % (q2) != 0:
-    if e % (q1-1) != 0 and e % (q2-1) != 0:
+    q1 = int((b1*2**1024 + b)/p1)
+    q2 = int((b2*2**1024 + b)/p2)
+    if isPrime(int(q1)) ==True and isPrime(int(q2)) == True and e % (q1-1) != 0 and e % (q2-1) != 0:
+#    if e % (q1-1) != 0 and e % (q2-1) != 0:
         break
     k = k+1
+    if k > 10000:
+        print "shit went wrong"
+        break
 
     
 n1 = b1*2**1024 + b
@@ -187,8 +189,9 @@ if gcd(q2-1,e) != 1:
 
 ver1 = [2]
 # return privkey, pubkey
-privkey1,pubkey1 = make_privkey(p1, q1, e)
-privkey2,pubkey2 = make_privkey(p2, q2, e)
+privkey1, pubkey1 = make_privkey(p1, q1, e)
+privkey2, pubkey2 = make_privkey(p2, q2, e)
 #make_cert(netid, pubkey, pseudo, ca_key = ECE422_CA_KEY, serial=x509.random_serial_number())
-#cert1 = make_cert(ctblair2,pubkey1,pseudo)
-#cert2 = make_cert(ctblair2,pubkey2,pseudo)
+cert1 = make_cert("ctblair2",pubkey1,u'unused123456789asdfgqwertasd')
+cert2 = make_cert("ctblair2",pubkey2,u'unused123456789asdfgqwertasd')
+
