@@ -1,7 +1,19 @@
 K 25
 svn:wc:ra_dav:version-url
 V 55
-/svn/fa17-cs461/!svn/ver/1615/_shared/discussion_slides
+/svn/fa17-cs461/!svn/ver/2662/_shared/discussion_slides
+END
+8-28-Intro-CS461.pptx
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/fa17-cs461/!svn/ver/386/_shared/discussion_slides/8-28-Intro-CS461.pptx
+END
+9-18-MP2.1.pptx
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/fa17-cs461/!svn/ver/2662/_shared/discussion_slides/9-18-MP2.1.pptx
 END
 9-11-MP1-CK2.pptx
 K 25
@@ -14,10 +26,4 @@ K 25
 svn:wc:ra_dav:version-url
 V 71
 /svn/fa17-cs461/!svn/ver/756/_shared/discussion_slides/9-4-MP1-CK1.pptx
-END
-8-28-Intro-CS461.pptx
-K 25
-svn:wc:ra_dav:version-url
-V 76
-/svn/fa17-cs461/!svn/ver/386/_shared/discussion_slides/8-28-Intro-CS461.pptx
 END
