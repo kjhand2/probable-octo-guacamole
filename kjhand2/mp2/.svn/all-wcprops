@@ -1,13 +1,73 @@
 K 25
 svn:wc:ra_dav:version-url
 V 41
-/svn/fa17-cs461/!svn/ver/3224/kjhand2/mp2
+/svn/fa17-cs461/!svn/ver/3315/kjhand2/mp2
+END
+2.1.2.S
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/fa17-cs461/!svn/ver/2807/kjhand2/mp2/2.1.2.S
+END
+2.1.3.S
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/fa17-cs461/!svn/ver/2807/kjhand2/mp2/2.1.3.S
+END
+2.1.4.S
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/fa17-cs461/!svn/ver/2813/kjhand2/mp2/2.1.4.S
+END
+2.1.5.S
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/fa17-cs461/!svn/ver/2845/kjhand2/mp2/2.1.5.S
+END
+2.1.1_addr.txt
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/fa17-cs461/!svn/ver/3315/kjhand2/mp2/2.1.1_addr.txt
+END
+2.2.10.py
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/fa17-cs461/!svn/ver/2642/kjhand2/mp2/2.2.10.py
+END
+2.2.11.py
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/fa17-cs461/!svn/ver/2642/kjhand2/mp2/2.2.11.py
+END
+cookie
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/fa17-cs461/!svn/ver/2768/kjhand2/mp2/cookie
+END
+checkpoint1_grade_2.txt
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/fa17-cs461/!svn/ver/3093/kjhand2/mp2/checkpoint1_grade_2.txt
 END
 2.1.1_eax.txt
 K 25
 svn:wc:ra_dav:version-url
 V 55
 /svn/fa17-cs461/!svn/ver/2777/kjhand2/mp2/2.1.1_eax.txt
+END
+checkpoint1_grade_3.txt
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/fa17-cs461/!svn/ver/3303/kjhand2/mp2/checkpoint1_grade_3.txt
 END
 partners.txt
 K 25
@@ -21,17 +81,17 @@ svn:wc:ra_dav:version-url
 V 50
 /svn/fa17-cs461/!svn/ver/2861/kjhand2/mp2/2.2.1.py
 END
-2.2.2.py
-K 25
-svn:wc:ra_dav:version-url
-V 50
-/svn/fa17-cs461/!svn/ver/2865/kjhand2/mp2/2.2.2.py
-END
 checkpoint1_grade.txt
 K 25
 svn:wc:ra_dav:version-url
 V 63
 /svn/fa17-cs461/!svn/ver/2922/kjhand2/mp2/checkpoint1_grade.txt
+END
+2.2.2.py
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/fa17-cs461/!svn/ver/2865/kjhand2/mp2/2.2.2.py
 END
 2.2.3.py
 K 25
@@ -74,58 +134,4 @@ K 25
 svn:wc:ra_dav:version-url
 V 50
 /svn/fa17-cs461/!svn/ver/2642/kjhand2/mp2/2.2.9.py
-END
-2.1.2.S
-K 25
-svn:wc:ra_dav:version-url
-V 49
-/svn/fa17-cs461/!svn/ver/2807/kjhand2/mp2/2.1.2.S
-END
-2.1.3.S
-K 25
-svn:wc:ra_dav:version-url
-V 49
-/svn/fa17-cs461/!svn/ver/2807/kjhand2/mp2/2.1.3.S
-END
-2.1.4.S
-K 25
-svn:wc:ra_dav:version-url
-V 49
-/svn/fa17-cs461/!svn/ver/2813/kjhand2/mp2/2.1.4.S
-END
-2.1.5.S
-K 25
-svn:wc:ra_dav:version-url
-V 49
-/svn/fa17-cs461/!svn/ver/2845/kjhand2/mp2/2.1.5.S
-END
-2.1.1_addr.txt
-K 25
-svn:wc:ra_dav:version-url
-V 56
-/svn/fa17-cs461/!svn/ver/3224/kjhand2/mp2/2.1.1_addr.txt
-END
-2.2.10.py
-K 25
-svn:wc:ra_dav:version-url
-V 51
-/svn/fa17-cs461/!svn/ver/2642/kjhand2/mp2/2.2.10.py
-END
-2.2.11.py
-K 25
-svn:wc:ra_dav:version-url
-V 51
-/svn/fa17-cs461/!svn/ver/2642/kjhand2/mp2/2.2.11.py
-END
-cookie
-K 25
-svn:wc:ra_dav:version-url
-V 48
-/svn/fa17-cs461/!svn/ver/2768/kjhand2/mp2/cookie
-END
-checkpoint1_grade_2.txt
-K 25
-svn:wc:ra_dav:version-url
-V 65
-/svn/fa17-cs461/!svn/ver/3093/kjhand2/mp2/checkpoint1_grade_2.txt
 END
